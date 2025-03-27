@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Demo Seguimiento Automático de Leads</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    .animated-card {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+    .animated-card:hover {
+  transform: scale(1.12);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+}
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #e6f0ff;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+    header {
+      background: linear-gradient(135deg, #4c1d95, #5b21b6);
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      animation: fadeInDown 1s ease;
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      animation: fadeInUp 1s ease;
+    }
+    .section {
+      max-width: 1000px;
+      margin: auto;
+      padding: 3rem 1.5rem;
+      animation: fadeIn 1s ease;
+    }
+    .section h2 {
+      color: #1e3a8a;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      text-align: center;
+    }
+    .process-step {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    .process-step.reverse {
+      flex-direction: row-reverse;
+    }
+    .process-text {
+      flex: 1;
+    }
+    .process-text h3 {
+      font-size: 1.5rem;
+      color: #1e3a8a;
+      margin-bottom: 0.5rem;
+    }
+    .process-video {
+      flex: 1;
+    }
+    .process-video video {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .arrow-img {
+      text-align: center;
+      margin: -2rem 0 2rem;
+    }
+    .arrow-img img {
+      max-width: 100px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    ul li {
+      background: #f8f5fc;
+      margin: 0.5rem 0;
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      transition: transform 0.2s ease;
+    }
+    ul li:hover {
+      transform: translateX(5px);
+    }
+    .cta {
+      text-align: center;
+      margin-top: 2rem;
+    }
+    .cta a {
+      background-color: #1e3a8a;
+      color: white;
+      padding: 1rem 2rem;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+    .cta a:hover {
+      background-color: #9333ea;
+      transform: scale(1.05);
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.875rem;
+      color: #888;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 768px) {
+  
+  
+      nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      
+  #beneficios div[style*="grid"] {
+    grid-template-columns: 1fr;
+  
+  #beneficios div[style*="grid"],
+  #precios div[style*="grid"],
+  section .section > div[style*="grid"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+}
+      .cta a,
+      .section .cta a {
+        width: 100%;
+        max-width: 320px;
+      }
+      header h1 {
+        font-size: 2rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+      .process-step, .process-step.reverse {
+        flex-direction: column;
+      }
+    }
+  .scroll-fade {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.scroll-fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      nav.style.background = '#f8f5fc';
+      nav.style.boxShadow = '0 2px 6px rgba(0,0,0,0.05)';
+      nav.style.transition = 'background 0.3s ease, box-shadow 0.3s ease';
+      nav.querySelectorAll('a').forEach(link => {
+        link.style.color = '#1e3a8a';
+      });
+    } else {
+      nav.style.background = 'transparent';
+      nav.style.boxShadow = 'none';
+      nav.querySelectorAll('a').forEach(link => {
+        link.style.color = '#1e3a8a';
+      });
+    }
+  });
+    const faders = document.querySelectorAll('.scroll-fade');
+    const appearOptions = { threshold: 0.1 };
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+    faders.forEach(el => appearOnScroll.observe(el));
+  });
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav a');
+
+  const activateLink = () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 80;
+      if (pageYOffset >= sectionTop) {
+        current = section.getAttribute('id');
+      }
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === `#${current}`) {
+        link.classList.add('active');
+      }
+    });
+  };
+
+  window.addEventListener('scroll', activateLink);
+</script>
+<style>
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: transparent;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+  nav a {
+    text-decoration: none;
+    color: #1e3a8a;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+  nav a.active {
+    color: #10b981;
+    border-bottom: 2px solid #10b981;
+  }
+  nav a:hover {
+    color: #10b981;
+  }
+</style>
+</head>
+<body>
+  <nav>
+  <a href="#inicio">Inicio</a>
+  <a href="#como-funciona">Cómo funciona</a>
+  <a href="#beneficios">Beneficios</a>
+  <a href="#precios">Precios</a>
+  <a href="#demo">Demo</a>
+  <a href="#faq">FAQ</a>
+</nav>
+  <header id="inicio" style="background: linear-gradient(135deg, #4c1d95, #5b21b6), url('https://images.unsplash.com/photo-1556742400-b5f8e2d361c5?auto=format&fit=crop&w=1280&q=80') no-repeat center center; background-size: cover; position: relative;">
+  <div style="background-color: rgba(0, 0, 0, 0.5); padding: 4rem 2rem; text-align: center;">
+    <img src="https://cdn-icons-png.flaticon.com/512/9131/9131544.png" alt="Logo LeadAheadAI" style="width: 60px; margin-bottom: 1rem;">
+    <h1 style="font-size: 2.8rem; color: #fff; margin-bottom: 1rem;">Deja de perder leads valiosos por falta de seguimiento</h1>
+    <p style="font-size: 1.2rem; color: #d1d5db; max-width: 600px; margin: auto;">Activa en 24h un sistema que responde por ti, organiza todo en un CRM y hace seguimiento automático. Más ventas, sin más trabajo.</p>
+    <div style="margin-top: 2rem;">
+      <a href="#demo" style="background-color: #10b981; color: #fff; padding: 1rem 2rem; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 1.1rem; transition: background 0.3s ease, transform 0.3s ease;">Reservar mi demo gratis ahora</a>
+<p style="margin-top: 2rem; color: #d1d5db; font-size: 1rem;">&nbsp;</p>
+      <p style="margin-top: 1rem; color: #d1d5db; font-size: 1rem;">Esta semana seleccionamos 3 negocios reales para probar el sistema GRATIS durante 7 días. Sin compromiso.</p>
+      <p style="margin-top: 0.5rem; color: #d1d5db; font-size: 0.95rem;">No necesitas saber programar. Lo configuramos todo por ti.</p>
+    </div>
+  </div>
+</header>
+
+  <sectionclass="section scroll-fade" style="text-align: center;">
+  <h2 style="font-size: 2.2rem; font-weight: 700; color: #1e3a8a; margin-bottom: 1rem;">¿Qué problema resuelve esta solución?</h2>
+  <p style="font-size: 1.3rem; max-width: 800px; margin: auto; color: #333;">Muchos negocios pierden oportunidades por no hacer seguimiento a sus leads. Este sistema automatiza la respuesta, el guardado de datos y la notificación al equipo para que nadie se escape.</p>
+  </section>
+
+  <section id="como-funciona" class="section">
+    <h2>¿Cómo funciona?</h2>
+    <div class="process-step">
+      <div class="process-video">
+        <video src="video-step1.mp4" autoplay muted loop playsinline></video>
+      </div>
+      <div class="process-text">
+        <h3>1. Entrada del lead</h3>
+        <p>Desde formulario, WhatsApp, email o entrada manual.</p>
+      </div>
+    </div>
+    <div class="arrow-img">
+      <img src="flecha1.svg" alt="Flecha hacia abajo">
+    </div>
+    <div class="process-step reverse">
+      <div class="process-video">
+        <video src="video-step2.mp4" autoplay muted loop playsinline></video>
+      </div>
+      <div class="process-text">
+        <h3>2. Registro en CRM</h3>
+        <p>Se guarda en Airtable y se organiza automáticamente.</p>
+      </div>
+    </div>
+    <div class="arrow-img">
+      <img src="flecha2.svg" alt="Flecha hacia abajo">
+    </div>
+    <div class="process-step">
+      <div class="process-video">
+        <video src="video-step3.mp4" autoplay muted loop playsinline></video>
+      </div>
+      <div class="process-text">
+        <h3>3. Email automático</h3>
+        <p>El lead recibe un correo de bienvenida profesional.</p>
+      </div>
+    </div>
+  <section class="section cta" style="background: #1e3a8a; color: white; text-align: center; padding: 3rem 2rem; margin-top: 1.5rem;">
+  <h2 style="font-size: 2rem; margin-bottom: 1rem;">¿Listo para llevar tu negocio al siguiente nivel?</h2>
+  <p style="font-size: 1.2rem; max-width: 700px; margin: auto; margin-bottom: 2rem;">Pide tu demo personalizada sin compromiso y descubre cómo puedes automatizar tu seguimiento de leads en menos de 24 horas.</p>
+  <a href="#demo" style="background-color: #10b981; color: #fff; padding: 1.2rem 2.5rem; font-size: 1.2rem; font-weight: bold; border-radius: 10px; text-decoration: none; display: inline-block; transition: background 0.3s ease, transform 0.3s ease;">Solicitar mi demo ahora</a>
+</section>
+
+<section class="section cta" style="padding-top: 2rem; padding-bottom: 2rem;">
+  <h2 style="color:#1e3a8a; font-size: 1.8rem; margin-bottom: 1rem;">¡No esperes más!</h2>
+  <p style="font-size: 1.1rem; margin-bottom: 2rem;">Descubre cómo otros negocios están ganando tiempo y clientes gracias a esta automatización.</p>
+  <a href="#" style="background-color: #1e3a8a; color: #fff; padding: 1rem 2rem; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 1.1rem; transition: background 0.3s ease, transform 0.3s ease; display: inline-block;">Quiero probarlo ya</a>
+</section>
+
+<section id="beneficios" class="section">
+  <h2>Beneficios clave</h2>
+  <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; flex-wrap: wrap;">
+    <div class="animated-card" style="background: #ffffff; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); text-align: center;">
+      <img src="https://cdn-icons-png.flaticon.com/512/1256/1256650.png" alt="Icono contacto" style="width: 48px; margin-bottom: 1rem;">
+      <h3 style="color: #1e3a8a;">Captura sin esfuerzo</h3>
+      <p>No pierdes contactos, todo lead queda registrado y atendido automáticamente.</p>
+    </div>
+    <div class="animated-card" style="background: #ffffff; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); text-align: center;">
+      <img src="https://cdn-icons-png.flaticon.com/512/1828/1828817.png" alt="Icono Rápido" style="width: 48px; margin-bottom: 1rem;">
+      <h3 style="color: #1e3a8a;">Configuración en 24h</h3>
+      <p>Te lo dejamos listo en un solo día, para que empieces a automatizar sin esperas.</p>
+    </div>
+    <div class="animated-card" style="background: #ffffff; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); text-align: center;">
+      <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Icono imagen profesional" style="width: 48px; margin-bottom: 1rem;">
+      <h3 style="color: #1e3a8a;">Imagen profesional</h3>
+      <p>Desde el primer mensaje tu marca se percibe moderna, rápida y clara.</p>
+    </div>
+    <div class="animated-card" style="background: #ffffff; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); text-align: center;">
+      <img src="https://cdn-icons-png.flaticon.com/512/4207/4207240.png" alt="Icono IA escalable" style="width: 48px; margin-bottom: 1rem;">
+      <h3 style="color: #1e3a8a;">Escalable con IA</h3>
+      <p>Personaliza mensajes, haz seguimiento y escala tu captación con inteligencia artificial.</p>
+    </div>
+  </div>
+</section>
+
+  <section id="precios" class="section">
+  <h2>Planes y precios</h2>
+  <div style="max-width: 1000px; margin: auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; flex-wrap: wrap;">
+    <div class="animated-card" style="background: #fff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); padding: 2rem; text-align: center;">
+      <h3 style="color:#1e3a8a;">Básico</h3>
+      <p style="font-size: 1.1rem; margin: 0.5rem 0;">147€ único +</p>
+      <p style="font-size: 1.5rem; font-weight: bold; margin: 0 0 1rem 0;">19€/mes</p>
+      <ul style="list-style: none; padding: 0;">
+        <li>✓ Formulario conectado a Airtable</li>
+        <li>✓ Email automático de bienvenida</li>
+        <li>✓ Dashboard simple</li>
+        <li>✓ Soporte mensual por email</li>
+      </ul>
+    </div>
+    <div class="animated-card" style="background: #fff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); padding: 2rem; text-align: center;">
+      <h3 style="color:#1e3a8a;">Pro</h3>
+      <p style="font-size: 1.1rem; margin: 0.5rem 0;">297€ único +</p>
+      <p style="font-size: 1.5rem; font-weight: bold; margin: 0 0 1rem 0;">29€/mes</p>
+      <ul style="list-style: none; padding: 0;">
+        <li>✓ Todo lo del plan básico</li>
+        <li>✓ Branding personalizado</li>
+        <li>✓ Flujos condicionales</li>
+        <li>✓ Alertas internas</li>
+        <li>✓ Soporte en 48h</li>
+      </ul>
+    </div>
+    <div class="animated-card" style="background: #fff; border: 2px solid #1e3a8a; border-radius: 12px; box-shadow: 0 6px 16px rgba(0,0,0,0.08); padding: 2rem; text-align: center; position: relative;">
+      <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #1e3a8a; color: #fff; padding: 0.3rem 1rem; border-radius: 8px; font-size: 0.9rem; font-weight: bold;">Recomendado</div>
+      <h3 style="color:#1e3a8a;">Premium</h3>
+      <p style="font-size: 1.1rem; margin: 0.5rem 0;">447€ único +</p>
+      <p style="font-size: 1.5rem; font-weight: bold; margin: 0 0 1rem 0;">49€/mes</p>
+      <ul style="list-style: none; padding: 0;">
+        <li>✓ Todo lo del plan PRO</li>
+        <li>✓ GPT para respuestas automáticas</li>
+        <li>✓ Dashboard con métricas</li>
+        <li>✓ Seguimiento inteligente</li>
+        <li>✓ Soporte prioritario</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section cta" style="padding: 2rem 1rem;">
+  <h2 style="color:#1e3a8a; font-size: 1.8rem; margin-bottom: 0.5rem;">¿Cuál es tu siguiente paso?</h2>
+  <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">Nuestros clientes ya están obteniendo resultados. ¿Te unes?</p>
+  <a href="#" style="background-color: #1e3a8a; color: #fff; padding: 1rem 2rem; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 1.1rem; transition: background 0.3s ease, transform 0.3s ease; display: inline-block;">Empieza ahora</a>
+</section>
+
+<section class="section">
+  <h2>Lo que dicen nuestros clientes</h2>
+  <div style="max-width: 1000px; margin: auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; flex-wrap: wrap;">
+    <div style="background: #fff; padding: 1.5rem; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); text-align: center;">
+      <p>"Gracias a FollowUp AutoLead hemos mejorado nuestro cierre de ventas en un 30%. Es como tener un asistente automático 24/7."</p>
+      <p style="font-weight: bold; color:#1e3a8a;">– Laura G., Inmobiliaria</p>
+    </div>
+    <div style="background: #fff; padding: 1.5rem; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); text-align: center;">
+      <p>"Recibíamos leads pero los gestionábamos tarde. Ahora automatizamos y hemos ganado 5 nuevos clientes este mes."</p>
+      <p style="font-weight: bold; color:#1e3a8a;">– Manuel R., Empresa de reformas</p>
+    </div>
+    <div style="background: #fff; padding: 1.5rem; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); text-align: center;">
+      <p>"Nuestro hotel recibe ahora confirmaciones automáticas y la experiencia del cliente mejoró desde el primer contacto."</p>
+      <p style="font-weight: bold; color:#1e3a8a;">– Sofía M., Hotel rural</p>
+    </div>
+  </div>
+</section>
+</section>
+
+
+  <section id="demo" class="section cta">
+  <h2 style="color:#1e3a8a; font-size: 1.8rem; margin-bottom: 1rem;">¿Listo para empezar?</h2>
+  <p style="font-size: 1.1rem; margin-bottom: 2rem;">Solicita una demo gratuita y comprueba cómo automatizar tus leads puede cambiar tu negocio.</p>
+  
+  <div style="margin-bottom: 3rem;"></div>
+  <div style="margin-top: 2rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;">
+    <a href="#" style="background-color:#10b981; color: white; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; text-decoration: none;">Agendar una reunión</a>
+    <a href="#" style="background-color:#ef4444; color: white; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; text-decoration: none;">Habla con nosotros ahora</a>
+  </div>
+</section>
+
+
+    <section id="casos-uso" class="section">
+  <h2>Casos de uso reales</h2>
+  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+    <div class="animated-card" style="padding: 1.5rem; background: #fff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); text-align: center;">
+      <h3 style="color: #1e3a8a;">Hotel rural</h3>
+      <p>Respondían con demora y perdían reservas. Ahora los leads reciben respuesta automática y triplicaron los cierres desde su web.</p>
+    </div>
+    <div class="animated-card" style="padding: 1.5rem; background: #fff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); text-align: center;">
+      <h3 style="color: #1e3a8a;">Inmobiliaria local</h3>
+      <p>Antes usaban Excel y WhatsApp. Ahora organizan y dan seguimiento automático desde un CRM adaptado a su flujo de trabajo.</p>
+    </div>
+    <div class="animated-card" style="padding: 1.5rem; background: #fff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); text-align: center;">
+      <h3 style="color: #1e3a8a;">Empresa de construcción</h3>
+      <p>Gestionaban solicitudes de presupuesto de forma manual. Con el sistema, califican y priorizan automáticamente los proyectos entrantes.</p>
+    </div>
+    <div class="animated-card" style="padding: 1.5rem; background: #fff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); text-align: center;">
+      <h3 style="color: #1e3a8a;">Centro de estética</h3>
+      <p>Reciben muchas consultas por Instagram y WhatsApp. Con la automatización, aumentaron un 22% las citas confirmadas semanalmente.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Sección: ¿Es para ti? -->
+<section class="section">
+  <h2>¿Es esto para ti?</h2>
+  <ul>
+    <li>👉 Recibes leads pero no haces seguimiento inmediato</li>
+    <li>👉 Usas Excel, papel o WhatsApp para guardar contactos</li>
+    <li>👉 Tienes pocos minutos al día y no puedes perder oportunidades</li>
+    <li>👉 Quieres parecer profesional desde el primer contacto</li>
+  </ul>
+</section>
+
+<!-- Mini formulario directo -->
+<section class="section">
+  <h2>¿Quieres saber si esto es para ti?</h2>
+  <p style="text-align:center; max-width: 600px; margin: auto;">Completa estos 3 datos y te mandamos una demo personalizada gratis:</p>
+  <form style="display: flex; flex-direction: column; gap: 1rem; max-width: 500px; margin: 2rem auto;">
+    <input type="text" placeholder="Tu nombre" style="padding: 0.8rem; border-radius: 8px; border: 1px solid #ccc;">
+    <input type="email" placeholder="Tu email" style="padding: 0.8rem; border-radius: 8px; border: 1px solid #ccc;">
+    <input type="text" placeholder="Sector o tipo de negocio" style="padding: 0.8rem; border-radius: 8px; border: 1px solid #ccc;">
+    <button type="submit" style="background-color: #10b981; color: white; padding: 1rem; font-weight: bold; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer;">Quiero mi demo gratis</button>
+  </form>
+</section>
+
+<!-- Sección: Preguntas frecuentes -->
+<section id="faq" class="section">
+  <h2>Preguntas frecuentes</h2>
+  <div style="max-width: 800px; margin: auto;">
+    <details style="margin-bottom: 1rem;">
+      <summary style="cursor: pointer; font-weight: bold; color:#1e3a8a;">¿Cuánto tarda en estar funcionando?</summary>
+      <p>En 24h puedes tener tu sistema de seguimiento listo y en marcha.</p>
+    </details>
+    <details style="margin-bottom: 1rem;">
+  <summary style="cursor: pointer; font-weight: bold; color:#1e3a8a;">¿Tengo que saber programar?</summary>
+  <p>No. Nosotros lo configuramos todo por ti, tú solo lo usas.</p>
+</details><details style="margin-bottom: 1rem;">
+      <summary style="cursor: pointer; font-weight: bold; color:#1e3a8a;">¿Y si quiero cambiar algún mensaje?</summary>
+      <p>Podrás pedir cambios, ajustes o mejoras en cualquier momento.</p>
+    </details>
+    <details style="margin-bottom: 1rem;">
+      <summary style="cursor: pointer; font-weight: bold; color:#1e3a8a;">¿Qué necesito para empezar?</summary>
+      <p>Solo dinos dónde recibes tus leads y tu logo. ¡Nosotros nos encargamos del resto!</p>
+    </details>
+  </div>
+</section>
+
+<!-- Mejora en FAQs -->
+<details style="margin-bottom: 1rem;">
+  <summary style="cursor: pointer; font-weight: bold; color:#1e3a8a;">¿Puedo probarlo sin pagar?</summary>
+  <p>Sí. Seleccionamos 3 negocios cada semana para una prueba gratuita sin compromiso.</p>
+</details>
+<details style="margin-bottom: 1rem;">
+  <summary style="cursor: pointer; font-weight: bold; color:#1e3a8a;">¿Qué pasa si no lo uso después de instalarlo?</summary>
+  <p>No pasa nada. Puedes pausarlo, modificarlo o escalarlo cuando lo necesites.</p>
+</details>
+<details style="margin-bottom: 1rem;">
+  <summary style="cursor: pointer; font-weight: bold; color:#1e3a8a;">¿Mis datos y los de mis clientes están seguros?</summary>
+  <p>Absolutamente. Usamos herramientas seguras, cifrado y almacenamos todo en servidores fiables.</p>
+</details>
+<footer>
+    LeadAheadAI &middot; Creado por Jesús Hernández &middot; Todos los derechos reservados
+  </footer>
+  <div style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
+    <a href="https://wa.me/34600111222" target="_blank" style="display: inline-block;">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" style="width: 60px; height: 60px;">
+    </a>
+  </div>
+
+  <footer style="background-color: #4c1d95; color: white; padding: 2rem; text-align: center;">
+    <div style="max-width: 1000px; margin: auto;">
+      <p style="font-size: 1rem; margin-bottom: 1rem;">LeadAheadAI · Creado por Jesús Hernández</p>
+      <div style="margin-bottom: 1rem;">
+        <a href="#inicio" style="margin: 0 10px; color: white; text-decoration: none;">Inicio</a>
+        <a href="#como-funciona" style="margin: 0 10px; color: white; text-decoration: none;">Cómo funciona</a>
+        <a href="#precios" style="margin: 0 10px; color: white; text-decoration: none;">Precios</a>
+        <a href="#demo" style="margin: 0 10px; color: white; text-decoration: none;">Demo</a>
+        <a href="#faq" style="margin: 0 10px; color: white; text-decoration: none;">FAQ</a>
+      </div>
+      <div style="margin-top: 1rem;">
+        <a href="https://linkedin.com" target="_blank" style="margin: 0 10px;"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" style="width: 24px;"></a>
+        <a href="https://instagram.com" target="_blank" style="margin: 0 10px;"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram" style="width: 24px;"></a>
+        <a href="mailto:contacto@leadahead.ai" style="margin: 0 10px;"><img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email" style="width: 24px;"></a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
