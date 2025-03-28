@@ -35,7 +35,7 @@
 
 <body>
   <nav>
-    <button class="menu-toggle" onclick="document.body.classList.toggle('menu-open')">☰</button>
+    <button class="menu-toggle" aria-label="Abrir menú de navegación">☰</button>
     <div class="nav-links">
       <a href="#inicio">Inicio</a>
       <a href="#como-funciona">Cómo funciona</a>
@@ -46,127 +46,149 @@
     </div>
   </nav>
 
-  <header id="inicio">
-    <h1>Deja de perder leads valiosos por falta de seguimiento</h1>
-    <p>Activa en 24h un sistema que responde por ti, organiza todo en un CRM y hace seguimiento automático.</p>
-    <form id="demoForm" class="hero-form">
-      <input type="text" name="nombre" placeholder="Tu nombre" required>
-      <input type="email" name="email" placeholder="Tu email" required>
-      <input type="text" name="telefono" placeholder="Teléfono" required>
-      <input type="text" name="sector" placeholder="Sector o tipo de negocio" required>
-      <button type="submit">Quiero mi demo gratis</button>
-    </form>
-    <div id="mensaje-exito" style="display:none; color: #10b981; font-weight: bold; text-align: center;">¡Formulario enviado! En unos segundos recibirás un email automatizado con tu demo personalizada.</div>
-  </header>
+  <main>
+    <header id="inicio">
+      <h1>Deja de perder leads valiosos por falta de seguimiento</h1>
+      <p>Activa en 24h un sistema que responde por ti, organiza todo en un CRM y hace seguimiento automático.</p>
+      <form id="demoForm" class="hero-form">
+        <input type="text" name="nombre" placeholder="Tu nombre" required>
+        <input type="email" name="email" placeholder="Tu email" required>
+        <input type="text" name="telefono" placeholder="Teléfono" required>
+        <input type="text" name="sector" placeholder="Sector o tipo de negocio" required>
+        <button type="submit">Quiero mi demo gratis</button>
+      </form>
+      <div id="mensaje-exito">¡Formulario enviado! En unos segundos recibirás un email automatizado con tu demo personalizada.</div>
+    </header>
 
-  <section id="como-funciona" class="section scroll-fade">
-    <h2>¿Cómo funciona?</h2>
-    <div class="process-step">
-      <div class="process-text">
-        <h3>1. Entrada del lead</h3>
-        <p>Desde formulario, WhatsApp, email o entrada manual.</p>
+    <section id="como-funciona" class="section scroll-fade">
+      <h2>¿Cómo funciona?</h2>
+      <div class="process-step">
+        <div class="process-text">
+          <h3>1. Entrada del lead</h3>
+          <p>Desde formulario, WhatsApp, email o entrada manual.</p>
+        </div>
+        <div class="process-video">
+          <video src="video-step1.mp4" autoplay muted loop playsinline title="Entrada del lead">Tu navegador no soporta este video.</video>
+        </div>
       </div>
-      <div class="process-video">
-        <video src="video-step1.mp4" autoplay muted loop playsinline></video>
+      <div class="process-step reverse">
+        <div class="process-text">
+          <h3>2. Registro en CRM</h3>
+          <p>Se guarda en Airtable y se organiza automáticamente.</p>
+        </div>
+        <div class="process-video">
+          <video src="video-step2.mp4" autoplay muted loop playsinline title="Registro en CRM">Tu navegador no soporta este video.</video>
+        </div>
       </div>
-    </div>
-    <div class="process-step reverse">
-      <div class="process-text">
-        <h3>2. Registro en CRM</h3>
-        <p>Se guarda en Airtable y se organiza automáticamente.</p>
+      <div class="process-step">
+        <div class="process-text">
+          <h3>3. Email automático</h3>
+          <p>El lead recibe un correo de bienvenida profesional.</p>
+        </div>
+        <div class="process-video">
+          <video src="video-step3.mp4" autoplay muted loop playsinline title="Email automático">Tu navegador no soporta este video.</video>
+        </div>
       </div>
-      <div class="process-video">
-        <video src="video-step2.mp4" autoplay muted loop playsinline></video>
-      </div>
-    </div>
-    <div class="process-step">
-      <div class="process-text">
-        <h3>3. Email automático</h3>
-        <p>El lead recibe un correo de bienvenida profesional.</p>
-      </div>
-      <div class="process-video">
-        <video src="video-step3.mp4" autoplay muted loop playsinline></video>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="beneficios" class="section scroll-fade">
-    <h2>Beneficios clave</h2>
-    <div class="grid-4">
-      <div class="animated-card">
-        <h3>Captura sin esfuerzo</h3>
-        <p>No pierdes contactos, todo lead queda registrado y atendido automáticamente.</p>
+    <section id="beneficios" class="section scroll-fade">
+      <h2>Beneficios clave</h2>
+      <div class="grid-4">
+        <div class="animated-card">
+          <h3>Captura sin esfuerzo</h3>
+          <p>No pierdes contactos, todo lead queda registrado y atendido automáticamente.</p>
+        </div>
+        <div class="animated-card">
+          <h3>Configuración en 24h</h3>
+          <p>Te lo dejamos listo en un solo día, para que empieces a automatizar sin esperas.</p>
+        </div>
+        <div class="animated-card">
+          <h3>Imagen profesional</h3>
+          <p>Desde el primer mensaje tu marca se percibe moderna, rápida y clara.</p>
+        </div>
+        <div class="animated-card">
+          <h3>Escalable con IA</h3>
+          <p>Personaliza mensajes, haz seguimiento y escala tu captación con inteligencia artificial.</p>
+        </div>
       </div>
-      <div class="animated-card">
-        <h3>Configuración en 24h</h3>
-        <p>Te lo dejamos listo en un solo día, para que empieces a automatizar sin esperas.</p>
-      </div>
-      <div class="animated-card">
-        <h3>Imagen profesional</h3>
-        <p>Desde el primer mensaje tu marca se percibe moderna, rápida y clara.</p>
-      </div>
-      <div class="animated-card">
-        <h3>Escalable con IA</h3>
-        <p>Personaliza mensajes, haz seguimiento y escala tu captación con inteligencia artificial.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="precios" class="section scroll-fade">
-    <h2>Planes y precios</h2>
-    <div class="grid-3">
-      <div class="animated-card">
-        <h3>Básico</h3>
-        <p>147€ único + 19€/mes</p>
-        <ul>
-          <li>✓ Formulario conectado a Airtable</li>
-          <li>✓ Email automático de bienvenida</li>
-          <li>✓ Dashboard simple</li>
-          <li>✓ Soporte mensual por email</li>
-        </ul>
+    <section id="precios" class="section scroll-fade">
+      <h2>Planes y precios</h2>
+      <div class="grid-3">
+        <div class="animated-card">
+          <h3>Básico</h3>
+          <p>147€ único + 19€/mes</p>
+          <ul>
+            <li>✓ Formulario conectado a Airtable</li>
+            <li>✓ Email automático de bienvenida</li>
+            <li>✓ Dashboard simple</li>
+            <li>✓ Soporte mensual por email</li>
+          </ul>
+        </div>
+        <div class="animated-card">
+          <h3>Pro</h3>
+          <p>297€ único + 29€/mes</p>
+          <ul>
+            <li>✓ Todo lo del plan básico</li>
+            <li>✓ Branding personalizado</li>
+            <li>✓ Flujos condicionales</li>
+            <li>✓ Alertas internas</li>
+          </ul>
+        </div>
+        <div class="animated-card destacado">
+          <h3>Premium</h3>
+          <p>447€ único + 49€/mes</p>
+          <ul>
+            <li>✓ Todo lo del plan Pro</li>
+            <li>✓ IA para respuestas automáticas</li>
+            <li>✓ Dashboard con métricas</li>
+            <li>✓ Seguimiento inteligente</li>
+          </ul>
+        </div>
       </div>
-      <div class="animated-card">
-        <h3>Pro</h3>
-        <p>297€ único + 29€/mes</p>
-        <ul>
-          <li>✓ Todo lo del plan básico</li>
-          <li>✓ Branding personalizado</li>
-          <li>✓ Flujos condicionales</li>
-          <li>✓ Alertas internas</li>
-        </ul>
-      </div>
-      <div class="animated-card destacado">
-        <h3>Premium</h3>
-        <p>447€ único + 49€/mes</p>
-        <ul>
-          <li>✓ Todo lo del plan Pro</li>
-          <li>✓ IA para respuestas automáticas</li>
-          <li>✓ Dashboard con métricas</li>
-          <li>✓ Seguimiento inteligente</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="testimonios" class="section scroll-fade">
-    <h2>Casos reales</h2>
-    <div class="grid-2">
-      <div class="animated-card">
-        <p>“Me despreocupé de los seguimientos. El sistema responde y organiza todo solo.”</p>
-        <strong>Laura G. - Agencia inmobiliaria</strong>
+    <section id="testimonios" class="section scroll-fade">
+      <h2>Casos reales</h2>
+      <div class="grid-2">
+        <div class="animated-card">
+          <p>“Me despreocupé de los seguimientos. El sistema responde y organiza todo solo.”</p>
+          <strong>Laura G. - Agencia inmobiliaria</strong>
+        </div>
+        <div class="animated-card">
+          <p>“Aumentamos las conversiones un 30% con la automatización del primer contacto.”</p>
+          <strong>Pedro R. - Centro estético</strong>
+        </div>
       </div>
-      <div class="animated-card">
-        <p>“Aumentamos las conversiones un 30% con la automatización del primer contacto.”</p>
-        <strong>Pedro R. - Centro estético</strong>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="cta-final" class="section scroll-fade">
-    <h2>¿Listo para recibir más leads?</h2>
-    <p>Automatiza el seguimiento sin esfuerzo. Solicita tu demo gratuita ahora.</p>
-    <a href="#inicio" class="cta-button">Solicitar demo</a>
-  </section>
+    <section id="cta-final" class="section scroll-fade">
+      <h2>¿Listo para recibir más leads?</h2>
+      <p>Automatiza el seguimiento sin esfuerzo. Solicita tu demo gratuita ahora.</p>
+      <a href="#inicio" class="cta-button">Solicitar demo</a>
+    </section>
+
+    <section id="faq" class="section scroll-fade">
+      <h2>Preguntas frecuentes</h2>
+      <details>
+        <summary>¿Cuánto tarda en estar funcionando?</summary>
+        <p>En solo 24h puedes tenerlo operativo.</p>
+      </details>
+      <details>
+        <summary>¿Necesito conocimientos técnicos?</summary>
+        <p>No. Nosotros lo configuramos todo.</p>
+      </details>
+      <details>
+        <summary>¿Puedo personalizar los mensajes?</summary>
+        <p>Claro, podemos adaptarlos a tu tono y estilo.</p>
+      </details>
+      <details>
+        <summary>¿Puedo probarlo sin pagar?</summary>
+        <p>Seleccionamos 3 negocios cada semana para una demo gratuita.</p>
+      </details>
+    </section>
+  </main>
 
   <div class="whatsapp-floating">
     <a href="https://wa.me/34652879331" target="_blank">
@@ -178,5 +200,4 @@
     LeadAheadAI &middot; Creado por Jesús Hernández &middot; Todos los derechos reservados
   </footer>
 </body>
-
 </html>
