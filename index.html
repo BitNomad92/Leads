@@ -134,10 +134,28 @@
     }
     @media (max-width: 768px) {
   nav {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: transparent;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+nav .logo {
+  display: block;
+  margin-right: auto;
+}
+
+nav .logo img {
+  width: 80px;
+  max-width: 100%;
+  height: auto;
+}
 
   .cta a,
   .section .cta a {
@@ -189,6 +207,46 @@
 .scroll-fade.visible {
   opacity: 1;
   transform: translateY(0);
+}
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: #1e3a8a;
+  cursor: pointer;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  body.menu-open .nav-links {
+    display: flex;
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav .logo img {
+    width: 100px;
+  }
 }
 </style>
 <script>
@@ -308,6 +366,58 @@ document.addEventListener('DOMContentLoaded', () => {
   body {
     padding-bottom: 100px;
   }
+
+  nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav .logo img {
+    width: 100px;
+    margin-bottom: 1rem;
+  }
+
+  nav a {
+    margin: 0.3rem 0;
+  }
+}
+
+  header h1 {
+    font-size: 1.8rem !important;
+  }
+
+  header p {
+    font-size: 1rem !important;
+  }
+
+  header a,
+  .cta a {
+    padding: 0.8rem 1.2rem !important;
+    font-size: 1rem !important;
+    max-width: 90vw;
+    display: inline-block;
+  }
+
+  #demo div[style*="display: flex"] {
+    flex-direction: column !important;
+    align-items: stretch;
+  }
+
+  #demo a {
+    width: 100%;
+    text-align: center;
+  }
+
+  form {
+    width: 100%;
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+
+  body {
+    padding-bottom: 100px;
+  }
 }
 
   header h1 {
@@ -331,12 +441,20 @@ document.addEventListener('DOMContentLoaded', () => {
 </head>
 <body>
   <nav>
-  <a href="#inicio">Inicio</a>
-  <a href="#como-funciona">Cómo funciona</a>
-  <a href="#beneficios">Beneficios</a>
-  <a href="#precios">Precios</a>
-  <a href="#demo">Demo</a>
-  <a href="#faq">FAQ</a>
+  <div class="logo">
+    <img src="logo1.LeadAheadAI.png" alt="Logo LeadAheadAI">
+  </div>
+  <button class="menu-toggle" onclick="document.body.classList.toggle('menu-open')">
+    ☰
+  </button>
+  <div class="nav-links">
+    <a href="#inicio">Inicio</a>
+    <a href="#como-funciona">Cómo funciona</a>
+    <a href="#beneficios">Beneficios</a>
+    <a href="#precios">Precios</a>
+    <a href="#demo">Demo</a>
+    <a href="#faq">FAQ</a>
+  </div>
 </nav>
   <header id="inicio" style="background: linear-gradient(135deg, #4c1d95, #5b21b6), url('https://images.unsplash.com/photo-1556742400-b5f8e2d361c5?auto=format&fit=crop&w=1280&q=80') no-repeat center center; background-size: cover; position: relative;">
   <div style="background-color: rgba(0, 0, 0, 0.5); padding: 4rem 2rem; text-align: center;">
@@ -381,7 +499,7 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     </div>
     <div class="arrow-img">
-      <img src="flecha2.png" alt="Flecha hacia abajo">
+      <img src="flecha2.png" alt="Flecha hacia abajo" style="transform: rotate(180deg);">
     </div>
     <div class="process-step">
       <div class="process-video">
@@ -392,16 +510,20 @@ document.addEventListener('DOMContentLoaded', () => {
         <p>El lead recibe un correo de bienvenida profesional.</p>
       </div>
     </div>
-  <section class="section cta" style="background: #1e3a8a; color: white; text-align: center; padding: 3rem 2rem; margin-top: 1.5rem;">
+  <section class="section cta" style="background: #1e3a8a; color: white; text-align: center; padding: 2.5rem 1rem; margin: 2rem auto; border-radius: 12px; max-width: 960px;">
   <h2 style="font-size: 2rem; margin-bottom: 1rem;">¿Listo para llevar tu negocio al siguiente nivel?</h2>
-  <p style="font-size: 1.2rem; max-width: 700px; margin: auto; margin-bottom: 2rem;">Pide tu demo personalizada sin compromiso y descubre cómo puedes automatizar tu seguimiento de leads en menos de 24 horas.</p>
-  <a href="#demo" style="background-color: #10b981; color: #fff; padding: 1.2rem 2.5rem; font-size: 1.2rem; font-weight: bold; border-radius: 10px; text-decoration: none; display: inline-block; transition: background 0.3s ease, transform 0.3s ease;">Solicitar mi demo ahora</a>
+  <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto 2rem auto;">Pide tu demo personalizada sin compromiso y descubre cómo puedes automatizar tu seguimiento de leads en menos de 24 horas.</p>
+  <div style="display: flex; justify-content: center;">
+    <a href="#demo" style="background-color: #10b981; color: #fff; padding: 1.2rem 2.5rem; font-size: 1.2rem; font-weight: bold; border-radius: 10px; text-decoration: none; transition: background 0.3s ease, transform 0.3s ease; display: inline-block; text-align: center;">Solicitar mi demo ahora</a>
+  </div>
 </section>
 
-<section class="section cta" style="padding-top: 2rem; padding-bottom: 2rem;">
+<section class="section cta" style="padding-top: 2rem; padding-bottom: 2rem; text-align: center;">
   <h2 style="color:#1e3a8a; font-size: 1.8rem; margin-bottom: 1rem;">¡No esperes más!</h2>
   <p style="font-size: 1.1rem; margin-bottom: 2rem;">Descubre cómo otros negocios están ganando tiempo y clientes gracias a esta automatización.</p>
-  <a href="#" style="background-color: #1e3a8a; color: #fff; padding: 1rem 2rem; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 1.1rem; transition: background 0.3s ease, transform 0.3s ease; display: inline-block;">Quiero probarlo ya</a>
+  <div style="display: flex; justify-content: center;">
+    <a href="#" style="background-color: #1e3a8a; color: #fff; padding: 1rem 2rem; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 1.1rem; transition: background 0.3s ease, transform 0.3s ease; display: inline-block; text-align: center;">Quiero probarlo ya</a>
+  </div>
 </section>
 
 <section id="beneficios" class="section">
@@ -472,10 +594,12 @@ document.addEventListener('DOMContentLoaded', () => {
   </div>
 </section>
 
-<section class="section cta" style="padding: 2rem 1rem;">
+<section class="section cta" style="padding: 2rem 1rem; text-align: center;">
   <h2 style="color:#1e3a8a; font-size: 1.8rem; margin-bottom: 0.5rem;">¿Cuál es tu siguiente paso?</h2>
   <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">Nuestros clientes ya están obteniendo resultados. ¿Te unes?</p>
-  <a href="#" style="background-color: #1e3a8a; color: #fff; padding: 1rem 2rem; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 1.1rem; transition: background 0.3s ease, transform 0.3s ease; display: inline-block;">Empieza ahora</a>
+  <div style="display: flex; justify-content: center;">
+    <a href="#" style="background-color: #1e3a8a; color: #fff; padding: 1rem 2rem; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 1.1rem; transition: background 0.3s ease, transform 0.3s ease; display: inline-block; text-align: center;">Empieza ahora</a>
+  </div>
 </section>
 
 <section class="section">
@@ -564,9 +688,10 @@ document.addEventListener('DOMContentLoaded', () => {
       <p>En 24h puedes tener tu sistema de seguimiento listo y en marcha.</p>
     </details>
     <details style="margin-bottom: 1rem;">
-  <summary style="cursor: pointer; font-weight: bold; color:#1e3a8a;">¿Tengo que saber programar?</summary>
-  <p>No. Nosotros lo configuramos todo por ti, tú solo lo usas.</p>
-</details><details style="margin-bottom: 1rem;">
+      <summary style="cursor: pointer; font-weight: bold; color:#1e3a8a;">¿Tengo que saber programar?</summary>
+      <p>No. Nosotros lo configuramos todo por ti, tú solo lo usas.</p>
+    </details>
+    <details style="margin-bottom: 1rem;">
       <summary style="cursor: pointer; font-weight: bold; color:#1e3a8a;">¿Y si quiero cambiar algún mensaje?</summary>
       <p>Podrás pedir cambios, ajustes o mejoras en cualquier momento.</p>
     </details>
@@ -574,22 +699,20 @@ document.addEventListener('DOMContentLoaded', () => {
       <summary style="cursor: pointer; font-weight: bold; color:#1e3a8a;">¿Qué necesito para empezar?</summary>
       <p>Solo dinos dónde recibes tus leads y tu logo. ¡Nosotros nos encargamos del resto!</p>
     </details>
+    <details style="margin-bottom: 1rem;">
+      <summary style="cursor: pointer; font-weight: bold; color:#1e3a8a;">¿Puedo probarlo sin pagar?</summary>
+      <p>Sí. Seleccionamos 3 negocios cada semana para una prueba gratuita sin compromiso.</p>
+    </details>
+    <details style="margin-bottom: 1rem;">
+      <summary style="cursor: pointer; font-weight: bold; color:#1e3a8a;">¿Qué pasa si no lo uso después de instalarlo?</summary>
+      <p>No pasa nada. Puedes pausarlo, modificarlo o escalarlo cuando lo necesites.</p>
+    </details>
+    <details style="margin-bottom: 1rem;">
+      <summary style="cursor: pointer; font-weight: bold; color:#1e3a8a;">¿Mis datos y los de mis clientes están seguros?</summary>
+      <p>Absolutamente. Usamos herramientas seguras, cifrado y almacenamos todo en servidores fiables.</p>
+    </details>
   </div>
 </section>
-
-<!-- Mejora en FAQs -->
-<details style="margin-bottom: 1rem;">
-  <summary style="cursor: pointer; font-weight: bold; color:#1e3a8a;">¿Puedo probarlo sin pagar?</summary>
-  <p>Sí. Seleccionamos 3 negocios cada semana para una prueba gratuita sin compromiso.</p>
-</details>
-<details style="margin-bottom: 1rem;">
-  <summary style="cursor: pointer; font-weight: bold; color:#1e3a8a;">¿Qué pasa si no lo uso después de instalarlo?</summary>
-  <p>No pasa nada. Puedes pausarlo, modificarlo o escalarlo cuando lo necesites.</p>
-</details>
-<details style="margin-bottom: 1rem;">
-  <summary style="cursor: pointer; font-weight: bold; color:#1e3a8a;">¿Mis datos y los de mis clientes están seguros?</summary>
-  <p>Absolutamente. Usamos herramientas seguras, cifrado y almacenamos todo en servidores fiables.</p>
-</details>
 <footer>
     LeadAheadAI &middot; Creado por Jesús Hernández &middot; Todos los derechos reservados
   </footer>
