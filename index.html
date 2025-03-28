@@ -133,21 +133,37 @@
       to { opacity: 1; transform: translateY(0); }
     }
     @media (max-width: 768px) {
-  
-  
-      nav {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-      
-  #beneficios div[style*="grid"] {
-    grid-template-columns: 1fr;
-  
+  nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .cta a,
+  .section .cta a {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  header p {
+    font-size: 1rem;
+  }
+
+  .process-step,
+  .process-step.reverse {
+    flex-direction: column;
+  }
+
   #beneficios div[style*="grid"],
   #precios div[style*="grid"],
-  section .section > div[style*="grid"] {
+  section.section > div[style*="grid"] {
     grid-template-columns: 1fr !important;
   }
+}
 }
 }
       .cta a,
@@ -251,6 +267,66 @@ document.addEventListener('DOMContentLoaded', () => {
   nav a:hover {
     color: #10b981;
   }
+  @media (max-width: 480px) {
+  header > div {
+    padding: 2.5rem 1rem !important;
+  }
+
+  header h1 {
+    font-size: 1.8rem !important;
+  }
+
+  header p {
+    font-size: 1rem !important;
+  }
+
+  header a,
+  .cta a {
+    padding: 0.8rem 1.2rem !important;
+    font-size: 1rem !important;
+    max-width: 90vw;
+    display: inline-block;
+  }
+
+  #demo div[style*="display: flex"] {
+    flex-direction: column !important;
+    align-items: stretch;
+  }
+
+  #demo a {
+    width: 100%;
+    text-align: center;
+  }
+
+  form {
+    width: 100%;
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+
+  body {
+    padding-bottom: 100px;
+  }
+}
+
+  header h1 {
+    font-size: 1.8rem !important;
+  }
+
+  header p {
+    font-size: 1rem !important;
+  }
+
+  header a,
+  .cta a {
+    padding: 0.8rem 1.2rem !important;
+    font-size: 1rem !important;
+    max-width: 90vw;
+    display: inline-block;
+  }
+}
+
 </style>
 </head>
 <body>
