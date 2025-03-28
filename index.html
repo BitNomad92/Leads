@@ -37,9 +37,9 @@
       animation: fadeInUp 1s ease;
     }
     .section {
-      max-width: 1000px;
-      margin: auto;
-      padding: 3rem 1.5rem;
+  max-width: 1000px;
+  margin: auto;
+  padding: 1.5rem 1rem;
       animation: fadeIn 1s ease;
     }
     .section h2 {
@@ -53,7 +53,7 @@
       flex-direction: row;
       align-items: center;
       gap: 2rem;
-      margin-bottom: 3rem;
+      margin-bottom: 2rem;
     }
     .process-step.reverse {
       flex-direction: row-reverse;
@@ -133,6 +133,50 @@
       to { opacity: 1; transform: translateY(0); }
     }
     @media (max-width: 768px) {
+  body {
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+
+  .section {
+    padding: 1.25rem 1rem;
+  }
+
+  .section h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .process-step {
+    margin-bottom: 1.5rem;
+  }
+
+  .cta {
+    margin-top: 1.5rem;
+  }
+
+  .cta p,
+  .cta h2 {
+    padding: 0 1rem;
+  }
+
+  .process-text h3 {
+    font-size: 1.3rem;
+  }
+
+  .arrow-img {
+    margin: 1rem 0;
+  }
+
+  .animated-card {
+    padding: 1rem;
+  }
+
+  .section ul li {
+    font-size: 0.95rem;
+    padding: 0.6rem 0.9rem;
+  }
+
   nav {
   position: sticky;
   top: 0;
@@ -441,9 +485,6 @@ document.addEventListener('DOMContentLoaded', () => {
 </head>
 <body>
   <nav>
-  <div class="logo">
-  <img src="/mnt/data/logo1.LeadAheadAI.png" alt="Logo LeadAheadAI" style="width: 120px; max-width: 100%; height: auto;">
-</div>
   <button class="menu-toggle" onclick="document.body.classList.toggle('menu-open')">
     ☰
   </button>
@@ -458,6 +499,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </nav>
   <header id="inicio" style="background: linear-gradient(135deg, #4c1d95, #5b21b6), url('https://images.unsplash.com/photo-1556742400-b5f8e2d361c5?auto=format&fit=crop&w=1280&q=80') no-repeat center center; background-size: cover; position: relative;">
   <div style="background-color: rgba(0, 0, 0, 0.5); padding: 2.5rem 1.5rem; text-align: center;">
+    <img src="/mnt/data/logo1.LeadAheadAI.png" alt="Logo Lead Ahead AI" style="width: 140px; margin-bottom: 1rem;">
     <h1 style="font-size: 2.2rem; color: #fff; margin-bottom: 1rem; max-width: 90%; margin-left: auto; margin-right: auto;">Deja de perder leads valiosos por falta de seguimiento</h1>
     <p style="font-size: 1.1rem; color: #d1d5db; max-width: 600px; margin: auto;">Activa en 24h un sistema que responde por ti, organiza todo en un CRM y hace seguimiento automático. Más ventas, sin más trabajo.</p>
     <div style="margin-top: 2rem;">
@@ -476,47 +518,47 @@ document.addEventListener('DOMContentLoaded', () => {
   <section id="como-funciona" class="section">
     <h2>¿Cómo funciona?</h2>
     <div class="process-step">
-      <div class="process-video">
-        <video src="video-step1.mp4" autoplay muted loop playsinline></video>
-      </div>
-      <div class="process-text">
-        <h3>1. Entrada del lead</h3>
-        <p>Desde formulario, WhatsApp, email o entrada manual.</p>
-      </div>
-    </div>
-    <div class="arrow-img">
-      <img src="/mnt/data/flecha1.png" alt="Flecha hacia abajo">
-    </div>
+  <div class="process-text">
+    <h3>1. Entrada del lead</h3>
+    <p>Desde formulario, WhatsApp, email o entrada manual.</p>
+  </div>
+  <div class="process-video">
+    <video src="video-step1.mp4" autoplay muted loop playsinline></video>
+  </div>
+</div>
+<div class="arrow-img">
+  <img src="/mnt/data/flecha1.png" alt="Flecha hacia abajo">
+</div>
     <div class="process-step reverse">
-      <div class="process-video">
-        <video src="video-step2.mp4" autoplay muted loop playsinline></video>
-      </div>
-      <div class="process-text">
-        <h3>2. Registro en CRM</h3>
-        <p>Se guarda en Airtable y se organiza automáticamente.</p>
-      </div>
-    </div>
+  <div class="process-text">
+    <h3>2. Registro en CRM</h3>
+    <p>Se guarda en Airtable y se organiza automáticamente.</p>
+  </div>
+  <div class="process-video">
+    <video src="video-step2.mp4" autoplay muted loop playsinline></video>
+  </div>
+</div>
     <div class="arrow-img">
       <img src="/mnt/data/flecha2.png" alt="Flecha hacia abajo" style="transform: rotate(180deg);">
     </div>
     <div class="process-step">
+  <div class="process-text">
+    <h3>3. Email automático</h3>
+    <p>El lead recibe un correo de bienvenida profesional.</p>
+  </div>
       <div class="process-video">
         <video src="video-step3.mp4" autoplay muted loop playsinline></video>
       </div>
-      <div class="process-text">
-        <h3>3. Email automático</h3>
-        <p>El lead recibe un correo de bienvenida profesional.</p>
-      </div>
-    </div>
-  <section class="section cta" style="background: #1e3a8a; color: white; text-align: center; padding: 2.5rem 1rem; margin: 2rem auto; border-radius: 12px; max-width: 960px;">
-  <h2 style="font-size: 2rem; margin-bottom: 1rem;">¿Listo para llevar tu negocio al siguiente nivel?</h2>
+  </div>
+  <section class="section cta" style="background: #1e3a8a; color: white; text-align: center; padding: 1rem 1rem 1.5rem 1rem; margin: 0 auto 1rem auto; border-radius: 12px; max-width: 960px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+  <h2 style="color: white; font-size: 1.8rem; margin-bottom: 1rem;">Solicita tu demo gratuita</h2>
   <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto 2rem auto;">Pide tu demo personalizada sin compromiso y descubre cómo puedes automatizar tu seguimiento de leads en menos de 24 horas.</p>
   <div style="display: flex; justify-content: center;">
     <a href="#demo" style="background-color: #10b981; color: #fff; padding: 1.2rem 2.5rem; font-size: 1.2rem; font-weight: bold; border-radius: 10px; text-decoration: none; transition: background 0.3s ease, transform 0.3s ease; display: inline-block; text-align: center;">Solicitar mi demo ahora</a>
   </div>
 </section>
 
-<section class="section cta" style="padding-top: 2rem; padding-bottom: 2rem; text-align: center;">
+<section class="section cta" style="padding-top: 1.5rem; padding-bottom: 1.5rem; text-align: center;">
   <h2 style="color:#1e3a8a; font-size: 1.8rem; margin-bottom: 1rem;">¡No esperes más!</h2>
   <p style="font-size: 1.1rem; margin-bottom: 2rem;">Descubre cómo otros negocios están ganando tiempo y clientes gracias a esta automatización.</p>
   <div style="display: flex; justify-content: center;">
@@ -592,7 +634,7 @@ document.addEventListener('DOMContentLoaded', () => {
   </div>
 </section>
 
-<section class="section cta" style="padding: 2rem 1rem; text-align: center;">
+<section class="section cta" style="padding: 1.5rem 1rem; text-align: center;">
   <h2 style="color:#1e3a8a; font-size: 1.8rem; margin-bottom: 0.5rem;">¿Cuál es tu siguiente paso?</h2>
   <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">Nuestros clientes ya están obteniendo resultados. ¿Te unes?</p>
   <div style="display: flex; justify-content: center;">
@@ -624,11 +666,11 @@ document.addEventListener('DOMContentLoaded', () => {
   <h2 style="color:#1e3a8a; font-size: 1.8rem; margin-bottom: 1rem;">¿Listo para empezar?</h2>
   <p style="font-size: 1.1rem; margin-bottom: 2rem;">Solicita una demo gratuita y comprueba cómo automatizar tus leads puede cambiar tu negocio.</p>
   
-  <div style="margin-bottom: 3rem;"></div>
-  <div style="margin-top: 2rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;">
-    <a href="#" style="background-color:#10b981; color: white; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; text-decoration: none;">Agendar una reunión</a>
-    <a href="#" style="background-color:#ef4444; color: white; padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; text-decoration: none;">Habla con nosotros ahora</a>
-  </div>
+  <div style="margin-bottom: 1.5rem;"></div>
+  <div style="margin-top: 2rem; display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+  <a href="mailto:jesushdez081@gmail.com" style="background-color:#10b981; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; text-decoration: none; max-width: 240px; width: 100%; text-align: center;">Agendar una reunión</a>
+  <a href="mailto:jesushdez081@gmail.com" style="background-color:#ef4444; color: white; padding: 0.6rem 1.2rem; border-radius: 8px; font-weight: 600; text-decoration: none; max-width: 240px; width: 100%; text-align: center;">Habla con nosotros ahora</a>
+</div>
 </section>
 
 
@@ -669,10 +711,10 @@ document.addEventListener('DOMContentLoaded', () => {
 <section class="section">
   <h2>¿Quieres saber si esto es para ti?</h2>
   <p style="text-align:center; max-width: 600px; margin: auto;">Completa estos 3 datos y te mandamos una demo personalizada gratis:</p>
-  <form style="display: flex; flex-direction: column; gap: 1rem; max-width: 500px; margin: 2rem auto;">
-    <input type="text" placeholder="Tu nombre" style="padding: 0.8rem; border-radius: 8px; border: 1px solid #ccc;">
-    <input type="email" placeholder="Tu email" style="padding: 0.8rem; border-radius: 8px; border: 1px solid #ccc;">
-    <input type="text" placeholder="Sector o tipo de negocio" style="padding: 0.8rem; border-radius: 8px; border: 1px solid #ccc;">
+  <form style="display: flex; flex-direction: column; gap: 1rem; max-width: 500px; margin: 2rem auto;" onsubmit="enviarPorWhatsapp(event)">
+    <input type="text" id="nombre" placeholder="Tu nombre" style="padding: 0.8rem; border-radius: 8px; border: 1px solid #ccc;">
+    <input type="email" id="email" placeholder="Tu email" style="padding: 0.8rem; border-radius: 8px; border: 1px solid #ccc;">
+    <input type="text" id="sector" placeholder="Sector o tipo de negocio" style="padding: 0.8rem; border-radius: 8px; border: 1px solid #ccc;">
     <button type="submit" style="background-color: #10b981; color: white; padding: 1rem; font-weight: bold; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer;">Quiero mi demo gratis</button>
   </form>
 </section>
@@ -715,7 +757,7 @@ document.addEventListener('DOMContentLoaded', () => {
     LeadAheadAI &middot; Creado por Jesús Hernández &middot; Todos los derechos reservados
   </footer>
   <div style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
-    <a href="https://wa.me/34600111222" target="_blank" style="display: inline-block;">
+    <a href="https://wa.me/34652879331" target="_blank" style="display: inline-block;">
       <img src="/mnt/data/icon-whatsapp.png" alt="WhatsApp" style="width: 60px; height: 60px;">
     </a>
   </div>
@@ -737,6 +779,20 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     </div>
   </footer>
+<script>
+function enviarPorWhatsapp(event) {
+  event.preventDefault();
+  const nombre = document.getElementById('nombre').value;
+  const email = document.getElementById('email').value;
+  const sector = document.getElementById('sector').value;
+
+  const mensaje = `Hola, soy ${nombre}. Estoy interesado en la demo gratuita.
+Email: ${email}
+Sector: ${sector}`;
+  const telefono = '34652879331';
+  const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+  window.open(url, '_blank');
+}
+</script>
 </body>
 </html>
-
