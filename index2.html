@@ -3,122 +3,180 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LeadAheadAI - Seguimiento Automático de Leads</title>
-  <meta property="og:title" content="LeadAheadAI - Automatiza tu seguimiento de leads en 24h">
-  <meta property="og:description" content="Activa en 24h un sistema que responde por ti, guarda los leads y hace seguimiento automático. Más ventas sin más trabajo.">
-  <meta property="og:image" content="https://bitnomad92.github.io/Leads/logo2.LeadAheadAI.png">
-  <meta property="og:url" content="https://bitnomad92.github.io/Leads/">
-  <meta name="twitter:card" content="summary_large_image">
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <title>LeadAheadAI - Automatiza tu seguimiento de leads en 24h</title>
+  <meta name="description" content="Activa en 24h un sistema que responde por ti, guarda los leads y hace seguimiento automático. Más ventas sin más trabajo.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png" />
+
+  <!-- Open Graph (para Facebook, LinkedIn, etc.) -->
+  <meta property="og:title" content="LeadAheadAI - Automatiza tu seguimiento de leads en 24h" />
+  <meta property="og:description" content="Activa en 24h un sistema que responde por ti, guarda los leads y hace seguimiento automático. Más ventas sin más trabajo." />
+  <meta property="og:image" content="https://bitnomad92.github.io/Leads/logo2.LeadAheadAI.png" />
+  <meta property="og:url" content="https://bitnomad92.github.io/Leads/" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="LeadAheadAI - Automatiza tu seguimiento de leads en 24h" />
+  <meta name="twitter:description" content="Activa en 24h un sistema que responde por ti, guarda los leads y hace seguimiento automático. Más ventas sin más trabajo." />
+  <meta name="twitter:image" content="https://bitnomad92.github.io/Leads/logo2.LeadAheadAI.png" />
+
+  <!-- Fuente -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Script -->
+  <script defer src="scripts.js"></script>
 </head>
-<body>
-  <!-- HERO + MINI FORM -->
-  <header id="inicio" class="hero">
-    <div class="hero-overlay">
-      <img src="logo2.LeadAheadAI.png" alt="LeadAheadAI Logo" class="logo">
-      <h1>Deja de perder leads valiosos por falta de seguimiento</h1>
-      <p>Activa en 24h un sistema que responde por ti, organiza tus leads y los sigue automáticamente.</p>
 
-      <!-- Mini Formulario Hero -->
-      <form id="miniForm" class="mini-form">
-        <input type="text" name="nombre" placeholder="Tu nombre" required>
-        <input type="email" name="email" placeholder="Tu email" required>
-        <button type="submit">Quiero mi demo</button>
-      </form>
-      <div id="mini-success" class="success-message">¡Gracias! En breve recibirás un email automatizado.</div>
+<body>
+  <nav>
+    <button class="menu-toggle" onclick="document.body.classList.toggle('menu-open')">☰</button>
+    <div class="nav-links">
+      <a href="#inicio">Inicio</a>
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#beneficios">Beneficios</a>
+      <a href="#precios">Precios</a>
+      <a href="#demo">Demo</a>
+      <a href="#faq">FAQ</a>
     </div>
+  </nav>
+
+  <header id="inicio">
+    <h1>Deja de perder leads valiosos por falta de seguimiento</h1>
+    <p>Activa en 24h un sistema que responde por ti, organiza todo en un CRM y hace seguimiento automático.</p>
+    <form id="demoForm" class="hero-form">
+      <input type="text" name="nombre" placeholder="Tu nombre" required>
+      <input type="email" name="email" placeholder="Tu email" required>
+      <input type="text" name="telefono" placeholder="Teléfono" required>
+      <input type="text" name="sector" placeholder="Sector o tipo de negocio" required>
+      <button type="submit">Quiero mi demo gratis</button>
+    </form>
+    <div id="mensaje-exito" style="display:none; color: #10b981; font-weight: bold; text-align: center;">¡Formulario enviado! En unos segundos recibirás un email automatizado con tu demo personalizada.</div>
   </header>
 
-  <!-- BLOQUE: ¿QUÉ HACE LA SOLUCIÓN? -->
-  <section class="section">
-    <h2>¿Qué problema resolvemos?</h2>
-    <p>Negocios como el tuyo pierden oportunidades cada día por no tener seguimiento automático. Con nuestra solución, eso se acabó.</p>
-  </section>
-
-  <!-- BLOQUE: FUNCIONAMIENTO EN 3 PASOS -->
-  <section class="section">
+  <section id="como-funciona" class="section scroll-fade">
     <h2>¿Cómo funciona?</h2>
-    <div class="steps">
-      <div class="step">
-        <h3>1. Recibes un lead</h3>
-        <p>Formulario, WhatsApp, email o entrada manual.</p>
+    <div class="process-step">
+      <div class="process-text">
+        <h3>1. Entrada del lead</h3>
+        <p>Desde formulario, WhatsApp, email o entrada manual.</p>
       </div>
-      <div class="step">
-        <h3>2. Se guarda y organiza</h3>
-        <p>CRM simple en Airtable con todo en orden.</p>
+      <div class="process-video">
+        <video src="video-step1.mp4" autoplay muted loop playsinline></video>
       </div>
-      <div class="step">
-        <h3>3. Se envía seguimiento automático</h3>
-        <p>El sistema responde, envía email y te notifica.</p>
+    </div>
+    <div class="process-step reverse">
+      <div class="process-text">
+        <h3>2. Registro en CRM</h3>
+        <p>Se guarda en Airtable y se organiza automáticamente.</p>
+      </div>
+      <div class="process-video">
+        <video src="video-step2.mp4" autoplay muted loop playsinline></video>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="process-text">
+        <h3>3. Email automático</h3>
+        <p>El lead recibe un correo de bienvenida profesional.</p>
+      </div>
+      <div class="process-video">
+        <video src="video-step3.mp4" autoplay muted loop playsinline></video>
       </div>
     </div>
   </section>
 
-  <!-- BLOQUE: BENEFICIOS DESTACADOS -->
-  <section class="section">
-    <h2>Beneficios inmediatos</h2>
-    <ul class="benefits">
-      <li>✅ Captura y organiza leads sin esfuerzo</li>
-      <li>✅ Imagen profesional desde el primer contacto</li>
-      <li>✅ Automatización inteligente sin necesidad técnica</li>
-      <li>✅ Configurado para ti en menos de 24h</li>
-    </ul>
+  <section id="beneficios" class="section scroll-fade">
+    <h2>Beneficios clave</h2>
+    <div class="grid-4">
+      <div class="animated-card">
+        <h3>Captura sin esfuerzo</h3>
+        <p>No pierdes contactos, todo lead queda registrado y atendido automáticamente.</p>
+      </div>
+      <div class="animated-card">
+        <h3>Configuración en 24h</h3>
+        <p>Te lo dejamos listo en un solo día, para que empieces a automatizar sin esperas.</p>
+      </div>
+      <div class="animated-card">
+        <h3>Imagen profesional</h3>
+        <p>Desde el primer mensaje tu marca se percibe moderna, rápida y clara.</p>
+      </div>
+      <div class="animated-card">
+        <h3>Escalable con IA</h3>
+        <p>Personaliza mensajes, haz seguimiento y escala tu captación con inteligencia artificial.</p>
+      </div>
+    </div>
   </section>
 
-  <!-- BLOQUE: PLANES Y PRECIOS -->
-  <section class="section pricing">
-    <h2>Elige cómo quieres automatizar</h2>
-    <div class="plans">
-      <div class="plan">
+  <section id="precios" class="section scroll-fade">
+    <h2>Planes y precios</h2>
+    <div class="grid-3">
+      <div class="animated-card">
         <h3>Básico</h3>
-        <p class="price">147€ + 19€/mes</p>
+        <p>147€ único + 19€/mes</p>
         <ul>
-          <li>Formulario conectado</li>
-          <li>Email automático</li>
-          <li>CRM simple</li>
+          <li>✓ Formulario conectado a Airtable</li>
+          <li>✓ Email automático de bienvenida</li>
+          <li>✓ Dashboard simple</li>
+          <li>✓ Soporte mensual por email</li>
         </ul>
       </div>
-      <div class="plan popular">
+      <div class="animated-card">
         <h3>Pro</h3>
-        <p class="price">297€ + 29€/mes</p>
+        <p>297€ único + 29€/mes</p>
         <ul>
-          <li>Todo lo del básico</li>
-          <li>Alertas internas</li>
-          <li>Branding y flujos</li>
+          <li>✓ Todo lo del plan básico</li>
+          <li>✓ Branding personalizado</li>
+          <li>✓ Flujos condicionales</li>
+          <li>✓ Alertas internas</li>
         </ul>
       </div>
-      <div class="plan">
-        <h3>Premium IA</h3>
-        <p class="price">447€ + 49€/mes</p>
+      <div class="animated-card destacado">
+        <h3>Premium</h3>
+        <p>447€ único + 49€/mes</p>
         <ul>
-          <li>Todo lo del PRO</li>
-          <li>IA para seguimiento inteligente</li>
-          <li>Dashboard de métricas</li>
+          <li>✓ Todo lo del plan Pro</li>
+          <li>✓ IA para respuestas automáticas</li>
+          <li>✓ Dashboard con métricas</li>
+          <li>✓ Seguimiento inteligente</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- BLOQUE: CASOS DE USO -->
-  <section class="section">
-    <h2>¿Quién ya lo está usando?</h2>
-    <div class="cases">
-      <div class="case">Hotel rural: triplicaron sus reservas con respuestas automáticas.</div>
-      <div class="case">Inmobiliaria: dejaron el Excel y ahora tienen un CRM automatizado.</div>
-      <div class="case">Centro de estética: 22% más citas desde Instagram.</div>
+  <section id="testimonios" class="section scroll-fade">
+    <h2>Casos reales</h2>
+    <div class="grid-2">
+      <div class="animated-card">
+        <p>“Me despreocupé de los seguimientos. El sistema responde y organiza todo solo.”</p>
+        <strong>Laura G. - Agencia inmobiliaria</strong>
+      </div>
+      <div class="animated-card">
+        <p>“Aumentamos las conversiones un 30% con la automatización del primer contacto.”</p>
+        <strong>Pedro R. - Centro estético</strong>
+      </div>
     </div>
   </section>
 
-  <!-- BLOQUE: CTA FINAL -->
-  <section class="section cta">
-    <h2>Activa tu sistema en menos de 24h</h2>
-    <p>No necesitas saber programar. Lo configuramos todo por ti.</p>
-    <a href="#demo" class="cta-button">Solicita tu demo gratis</a>
+  <section id="cta-final" class="section scroll-fade">
+    <h2>¿Listo para recibir más leads?</h2>
+    <p>Automatiza el seguimiento sin esfuerzo. Solicita tu demo gratuita ahora.</p>
+    <a href="#inicio" class="cta-button">Solicitar demo</a>
   </section>
 
-  <!-- Scripts -->
-  <script src="scripts.js"></script>
+  <div class="whatsapp-floating">
+    <a href="https://wa.me/34652879331" target="_blank">
+      <img src="icon-whatsapp.png" alt="WhatsApp" width="50" height="50">
+    </a>
+  </div>
+
+  <footer>
+    LeadAheadAI &middot; Creado por Jesús Hernández &middot; Todos los derechos reservados
+  </footer>
 </body>
+
 </html>
