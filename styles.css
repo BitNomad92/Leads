@@ -41,6 +41,28 @@ nav {
   align-items: center;
 }
 
+#mensaje-exito,
+#mensaje-error {
+  display: none;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+#mensaje-exito.visible,
+#mensaje-error.visible {
+  display: block;
+}
+
+#mensaje-exito {
+  color: #10b981;
+}
+
+#mensaje-error {
+  color: #ef4444;
+}
+
+
 nav a {
   text-decoration: none;
   color: var(--primary-color);
