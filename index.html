@@ -488,14 +488,6 @@ document.addEventListener('DOMContentLoaded', () => {
     display: inline-block;
   }
 }
-<script>
-  document.getElementById("demoForm").addEventListener("submit", function(e) {
-    // Mostrar mensaje de confirmación
-    setTimeout(() => {
-      document.getElementById("mensaje-exito").style.display = "block";
-    }, 500);
-  });
-</script>
 
 </style>
 </head>
@@ -728,18 +720,47 @@ document.addEventListener('DOMContentLoaded', () => {
   <h2>¿Quieres saber si esto es para ti?</h2>
   <p style="text-align:center; max-width: 600px; margin: auto;">Completa estos 3 datos y te mandamos una demo personalizada gratis:</p>
   
-  <form id="demoForm" action="https://hook.eu2.make.com/njsunmcpef6lxssfokhmo8otufmrpod7" method="POST" style="display: flex; flex-direction: column; gap: 1rem; max-width: 500px; margin: 2rem auto;">
-    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" style="padding: 0.8rem; border-radius: 8px; border: 1px solid #ccc;">
-    <input type="email" id="email" name="email" placeholder="Tu email" style="padding: 0.8rem; border-radius: 8px; border: 1px solid #ccc;">
-    <input type="text" id="telefono" name="telefono" placeholder="Teléfono" style="padding: 0.8rem; border-radius: 8px; border: 1px solid #ccc;">
-    <input type="text" id="sector" name="sector" placeholder="Sector o tipo de negocio" style="padding: 0.8rem; border-radius: 8px; border: 1px solid #ccc;">
+   <form id="demoForm" style="display: flex; flex-direction: column; gap: 1rem; max-width: 500px; margin: 2rem auto;">
+    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" style="padding: 0.8rem; border-radius: 8px; border: 1px solid #ccc;" required>
+    <input type="email" id="email" name="email" placeholder="Tu email" style="padding: 0.8rem; border-radius: 8px; border: 1px solid #ccc;" required>
+    <input type="text" id="telefono" name="telefono" placeholder="Teléfono" style="padding: 0.8rem; border-radius: 8px; border: 1px solid #ccc;" required>
+    <input type="text" id="sector" name="sector" placeholder="Sector o tipo de negocio" style="padding: 0.8rem; border-radius: 8px; border: 1px solid #ccc;" required>
     <button type="submit" style="background-color: #10b981; color: white; padding: 1rem; font-weight: bold; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer;">Quiero mi demo gratis</button>
   </form>
-
+  
   <div id="mensaje-exito" style="display: none; text-align: center; color: #10b981; font-weight: bold; margin-top: 1rem;">
     ¡Formulario enviado! En unos segundos recibirás un email automatizado con tu demo personalizada.
   </div>
+  <script>
+document.getElementById("demoForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const data = {
+    nombre: form.nombre.value,
+    email: form.email.value,
+    telefono: form.telefono.value,
+    sector: form.sector.value
+  };
+
+  try {
+    await fetch("https://hook.eu2.make.com/njsunmcpef6lxssfokhmo8otufmrpod7", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
+
+    document.getElementById("mensaje-exito").style.display = "block";
+    form.reset();
+  } catch (error) {
+    alert("Hubo un error al enviar el formulario. Inténtalo de nuevo.");
+    console.error(error);
+  }
+});
+</script>
+
 </section>
+
 
 
 <!-- Sección: Preguntas frecuentes -->
